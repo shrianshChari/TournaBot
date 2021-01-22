@@ -22,6 +22,8 @@ Please check out [TournaBot's top.gg page](https://top.gg/bot/719283403698077708
 
 ## Main Features
 
+- **Automatic tournament reminders** an hour before your tournaments begin, which provide tournament/event information.
+
 - **Automatic match calling** called DQ pinging, which automatically pings users in a specified channel a minute after their match has been called.
 
 - **User tournament results** that include details and sets from a user's three latest tournaments.
@@ -39,6 +41,7 @@ Please check out [TournaBot's top.gg page](https://top.gg/bot/719283403698077708
 ### Running TournaBot Locally
 
 TournaBot was initially created on Windows, but is compatible with any UNIX-based system.
+
 To create a Discord bot client, make an application through the [Discord Developer Portal](https://discord.com/developers/applications) and create a client through the **Bot** tab. The bot's **Token** is used for authentication.
 
 #### Dependencies
@@ -46,12 +49,29 @@ To create a Discord bot client, make an application through the [Discord Develop
 ##### Node.js
 
 TournaBot uses [Node.js](https://nodejs.org/en/) v12.0.0 or higher.
-To install the required npm dependencies, execute `npm run build` through the console within the project folder.
+
+To install the required npm dependencies, execute `npm run build` through the console within the project folder. If you clone the project using git and the `package.json` file is empty, you can copy and paste the text from the web repository.
 
 ##### MongoDB
 
-TournaBot requires a [MongoDB instance](https://www.mongodb.com/basics/create-database) to store data. The production version of TournaBot uses [Mongoose](https://mongoosejs.com/) to connect to a [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) database.
-A connection string is required to connect to any database. Read [this](https://mongoosejs.com/docs/connections.html) if you don't know what the connection string should look like. It must be set up **before** running TournaBot. Don't be afraid to join the [support/development Discord server](https://discord.gg/ssYPUk6Snc) if you need help.
+TournaBot requires a [MongoDB instance](https://www.mongodb.com/basics/create-database) to store data. The production version of TournaBot uses [Mongoose](https://mongoosejs.com/) to connect to a [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) database. If you don't know how to set up a local database, I recommend using [this guide](https://zellwk.com/blog/local-mongodb/).
+
+A connection string is required to connect to any database. Read [this](https://mongoosejs.com/docs/connections.html) if you don't know what the connection string should look like. It must be set up **before** running TournaBot. 
+
+Don't be afraid to join the [support/development Discord server](https://discord.gg/ssYPUk6Snc) if you need help setting up the database.
+
+TournaBot uses the following collections for categorizing data:
+
+- `announcemessages`
+- `channels`
+- `languages`
+- `matchmakingroles`
+- `matchmakingusers`
+- `pingroles`
+- `timezones`
+- `userids`
+
+If there is no collection present for a specific model, no data for that model will be collected.
 
 ##### Environment Variables
 
